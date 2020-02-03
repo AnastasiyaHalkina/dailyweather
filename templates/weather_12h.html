@@ -1,0 +1,13 @@
+{% if values == 'error' %}
+В данный момент прогноз погоды недоступен.
+Попробуйте повторить попытку позже.
+{% else %}
+    Прогноз погоды на ближайшие 12 часов в Минске {% for value in values %}
+
+ <b>Время: {{ value.date_time }}</b>
+    {{ value.phrase_hour }}
+    {{ value.temp_hour }}
+    {{ value.precipitation_hour }} {% if value.value_probability %} Вероятность: {{ value.value_probability }}% {% endif %}{% endfor %}
+
+ Прогноз погоды предоставлен сайтом <i>accuweather.com</i>
+{% endif %}

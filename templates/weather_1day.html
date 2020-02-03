@@ -1,0 +1,30 @@
+{% if values == 'error' %}
+В данный момент прогноз погоды недоступен.
+Попробуйте повторить попытку позже.
+{% else %}
+    Прогноз погоды на <b>{{values.today}}</b> в Минске
+
+ <b>Днем:</b>
+    {{ values.d_long_phrase }}
+    Температура {{ values.d_temp }}
+    Ощущается как {{ values.d_temp_real }}
+    Ветер {{ values.d_wind }} м/с, направление {{ values.d_wind_dir }}
+    Порывы ветра до {{ values.d_wind_gust }} м/с
+    {% if values.d_precipitation %}Ожидаются осадки суммарно {{ values.d_precipitation }}  час.
+    Подробнее:
+    {% if values.d_snow %}Снег {{ values.d_snow }} см {% endif %}{% if values.d_rain %}Дождь {{ values.d_rain }} мм {% endif %}{% if values.d_ice %}Изморозь {{ values.d_ice }} мм {% endif %}
+    {% else %}Без осадков! {% endif %}
+
+ <b>Ночью:</b>
+    {{ values.n_long_phrase }}
+    Температура {{ values.n_temp }}
+    Ощущается как {{ values.n_temp_real }}
+    Ветер {{ values.n_wind }} м/с, направление {{ values.n_wind_dir }}
+    Порывы ветра до {{ values.n_wind_gust }} м/с
+    {% if values.n_precipitation %}Ожидаются осадки суммарно {{ values.n_precipitation }}  час.
+    Подробнее:
+    {% if values.n_snow %}Снег {{ values.n_snow }} см {% endif %}{% if values.n_rain %}Дождь {{ values.n_rain }} мм {% endif %}{% if values.n_ice %}Изморозь {{ values.n_ice }} мм {% endif %}
+    {% else %}Без осадков! {% endif %}
+
+Прогноз погоды предоставлен сайтом <i>accuweather.com</i>
+{% endif %}
